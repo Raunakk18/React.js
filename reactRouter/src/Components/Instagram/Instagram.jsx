@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 function Instagram() {
     useEffect(() => {
-      
+      fetch('https://api.instagram.com/v1/users/self/?access_token=')
     }, [])
     
   return (
