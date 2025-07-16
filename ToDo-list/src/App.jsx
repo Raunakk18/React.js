@@ -1,8 +1,8 @@
 
 import './App.css'
-import { TodoForm } from './Components';
+import { TodoForm, TodoItem } from './Components';
 import { TodoProvider } from './Contexts/TodoContext';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 
 
 function App() {
@@ -21,7 +21,9 @@ const deleteTodo = (id) => {
 }
 
 const toggleComplete = (id) => {
-  setTodos( (prev) => prev.map( (prevTodo) => prevTodo === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo)   )
+  setTodos( (prev) => 
+    prev.map( (prevTodo) => 
+      prevTodo.id === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo)   )
 }
 
 
@@ -31,9 +33,6 @@ useEffect(() => {
     if(todos && todos.length > 0){
       setTodos(todos);
     }
-}, [])
-
-useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(todos))
 }, [todos])
 
@@ -49,6 +48,12 @@ useEffect(() => {
                     </div>
                     <div className="flex flex-wrap gap-y-3">
                         {/*Loop and Add TodoItem here */}
+                        { todos.map( (todo) => (
+                          <div key={todo.id}
+                          className='w-full'>
+                            <TodoItem todo={todo} />
+                             </div>
+                        ))}
                     </div>
                 </div>
             </div>
