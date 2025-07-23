@@ -40,9 +40,9 @@ export class AuthService {
 
   async getCurrentUser(){
     try {
-        return await this.account.get()
+        return await this.account.get();
     } catch (error) {
-        throw error
+        console.log("Appwite service :: getCurrentUser:: error" , error);
     }
     return null;
   }
