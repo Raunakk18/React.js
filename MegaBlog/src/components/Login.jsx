@@ -67,7 +67,10 @@ function Login() {
                         required : true
                     })}
                   />
-                  <button>Sign in</button>
+                  <Button 
+                  type= "submit"
+                  className = "w-full"
+                  >Sign in</Button>
             </div>
         </form>
         </div>
