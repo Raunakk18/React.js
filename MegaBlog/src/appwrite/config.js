@@ -8,8 +8,8 @@ export class Service{
 
     constructor(){
         this.client
-        .setEndpoint(conf.appriteUrl)
-        .setProject(conf.appriteProjectId)
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectId)
         this.databases =new Databases(this.client);
         this.bucket = new Storage(this.client)
     }
@@ -56,7 +56,7 @@ export class Service{
     async deletePost(slug){
         try {
              await this.databases.deleteDocument(
-                conf.appriteProjectId,
+                conf.appwriteProjectId,
                 conf.appwriteCollectionId,
                 slug
             )
@@ -71,7 +71,7 @@ export class Service{
     async getPost(slug){
         try {
             return await this.databases.getDocument(
-                conf.appriteProjectId,
+                conf.appwriteProjectId,
                 conf.appwriteCollectionId,
                 slug
             )
