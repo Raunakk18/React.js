@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, Input , Select , RTE} from '../index'
 import appwriteService from '../../appwrite/config'
@@ -43,11 +43,58 @@ function PostForm({post}) {
           ...data,
           userId : userData.$id
         })
+        if(dbPost){
+          navigate(`/post/${dbPost.$id}`)
+        }
       }
     }
 
+    const slugTransform = useCallback( (value) => {
+      if(value && typeof value === "string")
+        return value
+        .trim()
+        .toLowerCase()
+        .replace(/^[a-zA-Z\d\s]+/g,'-')
+        .replace(/\s/g,'-')
+
+        return ''
+    },[])
+
+    React.useEffect( () => {
+      const subscription = watch ( (value , {name}) => {
+        if(name === 'title'){
+          setValue('slug' , slugTransform(value))
+        }
+      })
+      return () => {
+        subscription.unsubscribe()
+      }
+    }, [watch , slugTransform, setValue])
+
   return (
-    <div>PostForm</div>
+    <form onSubmit={handleSubmit(submit)} className='flex flex-wrap'>
+      <div className="w-2/3 px-2">
+      <input 
+      label = "Title"
+      placeholder='Title'
+      className='mb-4'
+      {...register("title", {required:true})}
+      />
+      <input 
+      label = "Slug :"
+      placeholder='Slug'
+      className='mb-4'
+      {...register("slug" , {required: true})}
+      onInput={(e) => {
+        setValue("slug" , slugTransform(e.currentTarget.value), 
+          {shouldValidate:true
+        })
+      }
+    }
+      />
+      </div>
+    </form>
+
   )
 }
 
