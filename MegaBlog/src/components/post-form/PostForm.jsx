@@ -21,7 +21,7 @@ function PostForm({post}) {
     const submit = async(data) => {
       if(post){
         const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
-      }
+      
       if(file){
         appwriteService.deleteFile(post.featuredImage)
       }
@@ -33,8 +33,18 @@ function PostForm({post}) {
         if(dbPost){
           navigate(`/post/${dbPost.$id}`)
         }
-         
+      } else{
+        const file = await appwriteService.uploadFile(data.image[0]);
       }
+      if(file){
+        const fileId = file.$id
+        data.featuredImage= fileId
+        const dbPost = await appwriteService.createPost({
+          ...data,
+          userId : userData.$id
+        })
+      }
+    }
 
   return (
     <div>PostForm</div>
