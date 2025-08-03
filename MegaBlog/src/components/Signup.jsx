@@ -16,18 +16,18 @@ function Signup() {
     const create = async(data) => {
         setError("")
         try {
-           const userData = await authService.createAcount(data)
-           if (userData) {
+            const userData = await authService.createAcount(data)
+            if (userData) {
             const userData = await authService.getCurrentUser()
             if(userData) dispatch(login(userData))
                 navigate("/")
-           }
+            }
         } catch (error) {
             setError(error.message)
         }
     }
 
-  return (
+    return (
     <div className='flex items-center justify-center '>
         <div className={`mx-auto w-full  max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}> 
             <div className='mb-2 flex justify-center'>
@@ -84,7 +84,7 @@ function Signup() {
             </form>
             </div>
     </div>
-  )
+    )
 }
 
 export default Signup
