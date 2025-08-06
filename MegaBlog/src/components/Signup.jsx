@@ -3,9 +3,13 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import authService, { AuthService } from '../appwrite/auth'
 import { Link , useNavigate } from 'react-router-dom'
-import { Button , Input , Logo} from './index'
+import {   Logo} from './index.js'
 import { login } from '../store/authSlice'
 import { useForm } from 'react-hook-form'
+export { default as Button } from './Button.jsx';
+export { default as Input } from './Input.jsx';
+
+
 
 function Signup() {
     const navigate = useNavigate()

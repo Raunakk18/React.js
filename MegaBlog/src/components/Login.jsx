@@ -1,7 +1,10 @@
 import React ,{useState} from 'react'
 import { Link , useNavigate } from 'react-router-dom'
 import {login as authLogin} from '../store/authSlice'
-import {Button , Logo , Input } from './index'
+import { Logo } from './index'
+export { default as Input } from './Input';
+export { default as Button } from './Button'; // Add this line
+
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
 import {useForm} from  "react-hook-form"
