@@ -1,3 +1,5 @@
+
+
 import conf from '../conf/conf.js';
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
@@ -11,8 +13,8 @@ export class Service{
         .setEndpoint(conf.appwriteUrl)
         .setProject(conf.appwriteProjectId);
         this.databases = new Databases(this.client);
-        // this.bucket = new Storage(this.client);
-        this.bucket = new Storage (this.client);
+        this.bucket = new Storage(this.client); 
+        // this.bucket = new Storage (this.client);
     }
 
     async createPost({title, slug, content, featuredImage, status, userId}){
@@ -99,41 +101,41 @@ export class Service{
 
     // file upload service
 
-    // async uploadFile(file){
-    //     try {
-    //         return await this.bucket.createFile(
-    //             conf.appwriteBucketId,
-    //             ID.unique(),
-    //             file
-    //         )
-    //     } catch (error) {
-    //         console.log("Appwrite serive :: uploadFile :: error", error);
-    //         return false
-    //     }
-    // }
-        async uploadFile(file) {
+    async uploadFile(file){
         try {
-            // 1. Upload the file
-            const uploadedFile = await this.bucket.createFile(
+            return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
                 file
-            );
-
-            // 2. Create a public preview URL
-            const fileUrl = this.bucket.getFilePreview(
-                conf.appwriteBucketId,
-                uploadedFile.$id
-            ).href;
-
-            // 3. Return the URL
-            return fileUrl;
-
+            )
         } catch (error) {
-            console.log("Appwrite service :: uploadFile :: error", error);
-            return false;
+            console.log("Appwrite serive :: uploadFile :: error", error);
+            return false
         }
     }
+    //     async uploadFile(file) {
+    //     try {
+    //         // 1. Upload the file
+    //         const uploadedFile = await this.bucket.createFile(
+    //             conf.appwriteBucketId,
+    //             ID.unique(),
+    //             file
+    //         );
+
+    //         // 2. Create a public preview URL
+    //         const fileUrl = this.bucket.getFilePreview(
+    //             conf.appwriteBucketId,
+    //             uploadedFile.$id
+    //         ).href;
+
+    //         // 3. Return the URL
+    //         return fileUrl;
+
+    //     } catch (error) {
+    //         console.log("Appwrite service :: uploadFile :: error", error);
+    //         return false;
+    //     }
+    // }
 
 
     async deleteFile(fileId){
