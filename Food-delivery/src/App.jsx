@@ -19,13 +19,13 @@ const Header = () =>{
   )
 }
 
-const ResturantCard = () => {
+const ResturantCard = (props) => {
   return (
     <div className="resturant-card  w-60  p-1.5  border border-transparent hover:border-black cursor-pointer transition-transform duration-500 ease-in-out hover:scale-95" style={ {backgroundColor : '#f0f0f0'}} >
       <img className=' w-full h-40 object-cover'
           src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/FOOD_CATALOG/IMAGES/CMS/2024/12/30/4016da64-14c4-414e-a125-f0dd9f32b96d_4db8ba2c-d53d-4d5a-8e59-e0ec7d1766d7.jpg_compressed" alt="res-logo"  />
-          <h3 className='text-lg font-bold'>Meghna food</h3>
-          <h4 className='text-base font-semibold'>Hyderabadi briyani,India</h4>
+          <h3 className='text-lg font-bold'>{props.resName}</h3>
+          <h4 className='text-base font-semibold'>{props.cuisine}</h4>
           <h4 className='text-base font-semibold'>4🌟</h4>
           <h4 className='text-base font-semibold'>30-35</h4>
     </div>
@@ -37,8 +37,14 @@ const Body = ()=> {
     <div className=' body'>
       <div className='search p-2.5 flex justify-center items-center'>Search</div>
       <div className="resturant-container flex flex-wrap">
-        <ResturantCard/>
-       
+        <ResturantCard 
+        resName = "Meghana Foods"
+        cuisine = "Biryani ,Hyderabadi , Indian"
+        />
+        <ResturantCard
+        resName = "KFC"
+        cuisine = "Burger, Fast Food"
+        />
       </div>
     </div>
   )
