@@ -29,7 +29,6 @@ const getImageUrl = (imageId) => {
     return `https://media-assets.swiggy.com/swiggy/image/upload/${imageId}`;
   }
 
-
   return `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${imageId}`;
 };
 
@@ -42,8 +41,10 @@ const ResturantCard = ({ resData }) => {
       <img src={imageUrl} alt={resData?.info?.name} />
       <h3 className='text-lg font-semibold'>{resData?.info?.name}</h3>
       <h4 className='font-medium'>{resData?.info?.cuisines?.join(", ")}</h4>
+      <h4  className='font-medium' >{resData?.info?.costForTwo}</h4>
       <h4>⭐ {resData?.info?.avgRatingString}</h4>
       <h4>{resData?.info?.sla?.slaString}</h4>
+      
     </div>
   );
 };
@@ -1843,7 +1844,7 @@ const Body = ()=> {
     <div className=' body overflow-x-hidden box-border'>
       <div className='search p-2.5 flex justify-center items-center'>Search</div>
       <div className="resturant-container flex flex-wrap gap-7">
-         {resList.map((restaurant, index) => (
+          {resList.map((restaurant, index) => (
         <ResturantCard 
           key={restaurant.info.id || index} 
           resData={restaurant} 
