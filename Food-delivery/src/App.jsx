@@ -1,29 +1,9 @@
 import React from 'react'
 import './App.css'
+import Header from './Components/Header';
+import Body from './Components/Body';
 
-const Header = () =>{
-  return(
-    <div className='header flex justify-between border border-black px-2.5 py-1.5'>
-      <div className='logo-container'>
-        <img className='logo w-24' src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=fast-food&sf=&txt_keyword=All" alt="logo" />
-      </div>
-      <div className='nav-items px-10 cursor-pointer'>
-        <ul className='flex  text-xl font-medium  '>
-          <li className='p-2.5 m-2.5'>Home</li>
-          <li className='p-2.5 m-2.5'>About-Us</li>
-          <li className='p-2.5 m-2.5'>Menu</li>
-          <li className='p-2.5 m-2.5'>Cart</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
-
-
-
-
-
-const getImageUrl = (imageId) => {
+const GetImageUrl = (imageId) => {
   if (!imageId) return "";
 
   
@@ -36,7 +16,7 @@ const getImageUrl = (imageId) => {
 
 
 const ResturantCard = ({ resData }) => {
-  const imageUrl = getImageUrl(resData?.info?.cloudinaryImageId);
+  const imageUrl = GetImageUrl(resData?.info?.cloudinaryImageId);
 
   return (
     <div className='resturant-card  w-60  p-1.5  border border-transparent hover:border-black cursor-pointer transition-transform duration-500 ease-in-out hover:scale-95 'style={ {backgroundColor : '#f0f0f0'}}>
@@ -1841,21 +1821,21 @@ const resList = [
 ]
 
 
-const Body = ()=> {
-  return(
-    <div className=' body overflow-x-hidden box-border'>
-      <div className='search p-2.5 flex justify-center items-center'>Search</div>
-      <div className="resturant-container flex flex-wrap gap-7">
-          {resList.map((restaurant, index) => (
-        <ResturantCard 
-          key={restaurant.info.id || index} 
-          resData={restaurant} 
-        />
-      ))}
-      </div>
-    </div>
-  )
-} 
+// const Body = ()=> {
+//   return(
+//     <div className=' body overflow-x-hidden box-border'>
+//       <div className='search p-2.5 flex justify-center items-center'>Search</div>
+//       <div className="resturant-container flex flex-wrap gap-7">
+//           {resList.map((restaurant, index) => (
+//         <ResturantCard 
+//           key={restaurant.info.id || index} 
+//           resData={restaurant} 
+//         />
+//       ))}
+//       </div>
+//     </div>
+//   )
+// } 
 
 function App() {
   return (
