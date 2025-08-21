@@ -1,7 +1,8 @@
-
 import React from "react"
 import GetImageUrl from "./GetImageUrl";
 import ResturantCard from "./ResturantCard";
+import resList from "../utils/mockdata";
+
 const Body = ()=> {
   return(
     <div className=' body overflow-x-hidden box-border'>

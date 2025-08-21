@@ -1,8 +1,9 @@
 import React from "react";
 import GetImageUrl from "./GetImageUrl";
+
+
 const ResturantCard = ({ resData }) => {
   const imageUrl = GetImageUrl(resData?.info?.cloudinaryImageId);
-
   return (
     <div className='resturant-card  w-60  p-1.5  border border-transparent hover:border-black cursor-pointer transition-transform duration-500 ease-in-out hover:scale-95 'style={ {backgroundColor : '#f0f0f0'}}>
       <img src={imageUrl} alt={resData?.info?.name} />
