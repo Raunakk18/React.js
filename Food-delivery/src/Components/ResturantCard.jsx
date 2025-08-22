@@ -10,7 +10,7 @@ const ResturantCard = ({ resData }) => {
       <h3 className='text-lg font-semibold'>{resData?.info?.name}</h3>
       <h4 className='font-medium'>{resData?.info?.cuisines?.join(", ")}</h4>
       <h4  className='font-medium' >{resData?.info?.costForTwo}</h4>
-      <h4> {resData?.info?.avgRatingString}⭐</h4>
+      <h4>⭐{resData?.info?.avgRatingString}</h4>
       <h4>{resData?.info?.sla?.slaString}</h4>
       
     </div>
