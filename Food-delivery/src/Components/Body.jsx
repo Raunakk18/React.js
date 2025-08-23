@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react"
 import GetImageUrl from "./GetImageUrl";
 import ResturantCard from "./ResturantCard";
-import resList from "../utils/mockData";
 
 const Body = ()=> {
 
-  const [listOfResturants , setListOfResturants] = useState(resList)
+  const [listOfResturants , setListOfResturants] = useState([])
 
   useEffect( () => {
     fetchData();
@@ -15,11 +14,11 @@ const Body = ()=> {
     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING#")
 
     const json = await data.json()
-     const restaurants =
+      const restaurants =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
     console.log(restaurants);
-     setListOfResturants(restaurants)
+      setListOfResturants(restaurants)
     
   }
 
