@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import GetImageUrl from "./GetImageUrl";
 import ResturantCard from "./ResturantCard";
+import Shimmer from "./Shimmer";
 
 const Body = ()=> {
 
@@ -19,7 +20,10 @@ const Body = ()=> {
 
     console.log(restaurants);
       setListOfResturants(restaurants)
-    
+  }
+
+  if(listOfResturants.length === 0){
+    return <Shimmer/>
   }
 
   return(
