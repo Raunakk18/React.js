@@ -22,11 +22,13 @@ const Body = ()=> {
       setListOfResturants(restaurants)
   }
 
-  if(listOfResturants.length === 0){
-    return <Shimmer/>
-  }
+  // if(listOfResturants.length === 0){
+  //   return <Shimmer/>
+  // }
 
-  return(
+  return listOfResturants.length=== 0?(
+      <Shimmer/>
+        ) :(
     <div className=' body overflow-x-hidden box-border'>
       <div className='filter m-2.5 '>
         <button className="filter-btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-2xl cursor-pointer font-medium" 
