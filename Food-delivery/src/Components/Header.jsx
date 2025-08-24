@@ -18,7 +18,9 @@ function Header() {
             <li className='p-2.5 m-2.5'>Cart</li>
             <button className=' bg-blue-600 hover:bg-blue-700 rounded-lg px-2 h-8 mt-5'
             onClick={ () => {
-                setBtnName("Logout")
+                btnName === "Login" ?
+                setBtnName("Logout") 
+                : setBtnName("Login")
             }}
             >
                 {btnName}
