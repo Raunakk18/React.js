@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LOGO_URL from '../utils/constants'
 
 function Header() {
+    const [btnName , setBtnName] =useState("Login")
     return (
     <div className='header flex justify-between border border-black px-2.5 py-1.5'>
         <div className='logo-container'>
@@ -15,6 +16,13 @@ function Header() {
             <li className='p-2.5 m-2.5'>About-Us</li>
             <li className='p-2.5 m-2.5'>Menu</li>
             <li className='p-2.5 m-2.5'>Cart</li>
+            <button className=' bg-blue-600 hover:bg-blue-700 rounded-lg px-2 h-8 mt-5'
+            onClick={ () => {
+                setBtnName("Logout")
+            }}
+            >
+                {btnName}
+            </button>
             </ul>
         </div>
         </div>
