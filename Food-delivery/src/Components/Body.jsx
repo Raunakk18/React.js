@@ -7,6 +7,7 @@ const Body = ()=> {
 
   const [listOfResturants , setListOfResturants] = useState([])
   const [searchText , setSearchText] = useState("")
+  const [filteredResturants , setFilteredResturants] = useState([])
 
   useEffect( () => {
     fetchData();
@@ -21,6 +22,7 @@ const Body = ()=> {
 
     console.log(restaurants);
       setListOfResturants(restaurants)
+      setFilteredResturants(restaurants)
   }
 
   // if(listOfResturants.length === 0){
@@ -45,7 +47,7 @@ const Body = ()=> {
             console.log(searchText);
             
             const filteredResturant = listOfResturants.filter( (res) => res.info.name.toLowerCase(). includes(searchText.toLocaleLowerCase()))
-            setListOfResturants(filteredResturant)
+            setFilteredResturants(filteredResturant)
           }}
         
           >Search</button>
@@ -57,7 +59,7 @@ const Body = ()=> {
         }}>Top rated resturants</button>
       </div>
       <div className="resturant-container flex flex-wrap gap-7 ml-2.5">
-          {listOfResturants.map((restaurant, index) => (
+          {filteredResturants.map((restaurant, index) => (
         <ResturantCard 
           key={restaurant.info.id || index} 
           resData={restaurant} 
