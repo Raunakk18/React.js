@@ -43,9 +43,7 @@ const Body = ()=> {
           className="border border-black ml-2.5" />
           <button 
           className="bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer font-medium rounded-2xl px-4 py-2 ml-0.5"
-          onClick={ () => {
-            console.log(searchText);
-            
+          onClick={ () => {            
             const filteredResturant = listOfResturants.filter( (res) => res.info.name.toLowerCase(). includes(searchText.toLocaleLowerCase()))
             setFilteredResturants(filteredResturant)
           }}
