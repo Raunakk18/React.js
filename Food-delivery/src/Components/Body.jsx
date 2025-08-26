@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer";
 const Body = ()=> {
 
   const [listOfResturants , setListOfResturants] = useState([])
+  const [searchText , setSearchText] = useState("")
 
   useEffect( () => {
     fetchData();
@@ -32,8 +33,22 @@ const Body = ()=> {
     <div className=' body overflow-x-hidden box-border'>
       <div className='filter m-2.5 flex gap-2.5'>
         <div className="search ">
-          <input type="text" className="border border-black ml-2.5" />
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer font-medium rounded-2xl px-4 py-2 ml-0.5">Search</button>
+          <input type="text" 
+          value={searchText} 
+          onChange={(e) => {
+            setSearchText(e.target.value)
+          }}
+          className="border border-black ml-2.5" />
+          <button 
+          className="bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer font-medium rounded-2xl px-4 py-2 ml-0.5"
+          onClick={ () => {
+            console.log(searchText);
+            
+            const filteredResturant = listOfResturants.filter( (res) => res.info.name.toLowerCase(). includes(searchText.toLocaleLowerCase()))
+            setListOfResturants(filteredResturant)
+          }}
+        
+          >Search</button>
         </div>
         <button className="filter-btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 ml-2.5  rounded-2xl cursor-pointer font-medium" 
         onClick={ () => {
