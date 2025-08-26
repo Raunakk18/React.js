@@ -14,7 +14,16 @@ const Body = ()=> {
   }, [])
 
   const fetchData = async() => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING#")
+    // const data = await fetch("https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING#")
+
+    // const data = await fetch(
+    //   "https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    // );
+
+    const data = await fetch(
+  "https://api.allorigins.win/raw?url=" + 
+  encodeURIComponent("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+);
 
     const json = await data.json()
       const restaurants =
