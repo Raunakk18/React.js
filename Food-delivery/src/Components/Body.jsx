@@ -31,11 +31,11 @@ const Body = ()=> {
         ) :(
     <div className=' body overflow-x-hidden box-border'>
       <div className='filter m-2.5 flex gap-2.5'>
-        <div className="search">
-          <input type="text" />
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer font-medium rounded-2xl px-4 py-2">Search</button>
+        <div className="search ">
+          <input type="text" className="border border-black ml-2.5" />
+          <button className="bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer font-medium rounded-2xl px-4 py-2 ml-0.5">Search</button>
         </div>
-        <button className="filter-btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-2xl cursor-pointer font-medium" 
+        <button className="filter-btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 ml-2.5  rounded-2xl cursor-pointer font-medium" 
         onClick={ () => {
           const filteredList = listOfResturants.filter( (res) => res.info.avgRatingString>=4.6)
           setListOfResturants(filteredList)
