@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LOGO_URL from '../utils/constants'
 
 function Header() {
     const [btnName , setBtnName] =useState("Login")
+    console.log("header-rendered");
+
+    useEffect( ()=> {
+        console.log("useEffect called");
+    } )
+
     return (
     <div className='header flex justify-between border border-black px-2.5 py-1.5'>
         <div className='logo-container'>
