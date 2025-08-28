@@ -15,9 +15,13 @@ const router = createBrowserRouter([
   {
     path: "",
     element: <App/>,
-    errorElement : <Error/>
-  },
-  {
+    errorElement : <Error/>,
+    children: [
+      {
+        path : "/",
+        element: <Body/>
+      },
+      {
     path : "about",
     element : <About/>
   },
@@ -25,6 +29,9 @@ const router = createBrowserRouter([
     path : "contact",
     element: <Contact/>
   }
+    ]
+  },
+  
 ])
 
 createRoot(document.getElementById('root')).render(

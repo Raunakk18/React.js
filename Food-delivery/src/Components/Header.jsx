@@ -10,7 +10,7 @@ function Header() {
     }, [btnName])
 
     return (
-    <div className='header flex justify-between border border-black px-2.5 py-1.5'>
+    <div className='header flex justify-between border border-black px-2.5 py-1.5 '>
         <div className='logo-container'>
             <img className='logo w-24' 
             src= {LOGO_URL}

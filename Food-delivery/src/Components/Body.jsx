@@ -60,10 +60,10 @@ const Body = ()=> {
           >Search</button>
         </div>
         <button className="filter-btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 ml-2.5  rounded-2xl cursor-pointer font-medium" 
-        onClick={ () => {
-          const filteredList = listOfResturants.filter( (res) => res.info.avgRatingString>=4.6)
-          setListOfResturants(filteredList)
-        }}>Top rated resturants</button>
+        onClick={() => {
+  const filteredList = listOfResturants.filter((res) => res.info.avgRatingString >= 4.6)
+  setFilteredResturants(filteredList)
+          }}>Top rated resturants</button>
       </div>
       <div className="resturant-container flex flex-wrap gap-7 ml-2.5">
           {filteredResturants.map((restaurant, index) => (

@@ -10,7 +10,7 @@ const Error = () => {
         <div className="flex justify-center items-center my-4 text-2xl font-medium">
             <h1>Oops!!!</h1>    
             <br />
-            <h2>Something went wrong😔</h2>
+            <h2>Something went wrong 😔</h2>
         </div>
         <div className="flex justify-center items-center my-4 text-2xl font-medium">
                 <h3>{err.status}</h3>
