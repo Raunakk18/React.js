@@ -29,7 +29,7 @@ const Body = ()=> {
       const restaurants =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-    console.log(restaurants);
+    // console.log(restaurants);
       setListOfResturants(restaurants)
       setFilteredResturants(restaurants)
   }

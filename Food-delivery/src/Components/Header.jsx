@@ -7,7 +7,7 @@ function Header() {
 
     useEffect( () => {
         console.log("useEffect called")
-    }, [])
+    }, [btnName])
 
     return (
     <div className='header flex justify-between border border-black px-2.5 py-1.5'>
