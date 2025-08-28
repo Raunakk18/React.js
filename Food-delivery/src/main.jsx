@@ -2,10 +2,33 @@ import React,{ StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import Header from './Components/Header';
+import Body from './Components/Body';
+import ResturantCard from './Components/ResturantCard';
+import GetImageUrl from './Components/GetImageUrl';
+import {createBrowserRouter , RouterProvider}from 'react-router-dom'
+import About from './Components/About.jsx';
+import Contact from './Components/Contact.jsx';
+import Error from './Components/Error.jsx';
 
+const router = createBrowserRouter([
+  {
+    path: "",
+    element: <App/>,
+    errorElement : <Error/>
+  },
+  {
+    path : "about",
+    element : <About/>
+  },
+  {
+    path : "contact",
+    element: <Contact/>
+  }
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </StrictMode>,
 )
