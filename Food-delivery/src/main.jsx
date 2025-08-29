@@ -10,6 +10,7 @@ import {createBrowserRouter , RouterProvider}from 'react-router-dom'
 import About from './Components/About.jsx';
 import Contact from './Components/Contact.jsx';
 import Error from './Components/Error.jsx';
+import RestaurantsMenu from './Components/RestaurantsMenu.jsx';
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path : "contact",
     element: <Contact/>
+  },
+  {
+    path : "menu",
+    element : <RestaurantsMenu/>
   }
     ]
   },
