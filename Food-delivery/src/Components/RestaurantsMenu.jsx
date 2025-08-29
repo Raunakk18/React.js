@@ -24,7 +24,7 @@ const fetchMenu = async () => {
     (<Shimmer/> 
     ) : (
         <div> 
-            <h1 className="text-red-950">{resInfo?.data?.cards[2]?.card?.card?.info?.areaName}</h1>
+            
         </div>
     )
 }
