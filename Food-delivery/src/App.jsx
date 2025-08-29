@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import Body from './Components/Body';
 import ResturantCard from './Components/ResturantCard';
 import GetImageUrl from './Components/GetImageUrl';
+import { Outlet } from 'react-router-dom';
 
 
 
@@ -12,7 +13,7 @@ function App() {
     <>
       <div className='app'>
         <Header/>
-        <Body/>
+        <Outlet/>
       </div>
     </>
   )
