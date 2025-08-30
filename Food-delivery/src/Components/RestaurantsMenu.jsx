@@ -16,8 +16,8 @@ const RestaurantsMenu = () => {
         console.log(json);
         
         const resArray = json?.data?.cards
-      ?.map((c) => c.card?.card?.info)
-      .filter(Boolean);
+        ?.map((c) => c.card?.card?.info)
+        .filter(Boolean);
 
     setResInfo(resArray);
 
@@ -30,13 +30,39 @@ const RestaurantsMenu = () => {
     ) : (
         <div>
             {resInfo.map((info, i) => (
-        <div key={i} className=" p-4" >
-            <h1 className="text-2xl font-bold">{info.name}</h1>
-            <h2 className="text-xl font-medium ">{info.cuisines?.join(", ")}</h2>
-            <h2 className=" text-base font-medium">⭐ {info.avgRatingString}</h2>
-            <h2 className=" text-base font-medium">💰 {info.costForTwoMessage}</h2>
-        </div>
-        ))}
+                
+        <div 
+    key={i} 
+    className="max-w-3xl mx-auto my-13 bg-white rounded-lg shadow-md p-5 border border-gray-200"
+    >
+
+    <h1 className="text-2xl font-bold mb-2">{info.name}</h1>
+
+    
+    <div className="flex items-center text-gray-700 text-lg mb-2">
+        <span className="flex items-center gap-1">
+        ⭐ <span className="font-semibold">{info.avgRatingString}</span>
+        </span>
+        <span className="mx-2">•</span>
+        <span>{info.costForTwoMessage}</span>
+    </div>
+
+    {/* Cuisines */}
+    <h2 className="text-lg font-medium text-gray-800 mb-1">
+        {info.cuisines?.join(", ")}
+    </h2>
+
+    {/* Outlet + Area */}
+    <div className="text-gray-600 text-base">
+        <span className="font-semibold">Outlet</span> {info.areaName}
+    </div>
+
+    {/* Delivery Time (if available) */}
+    <div className="text-gray-600 text-base mt-1">
+        ⏱ {info.sla?.slaString || "30-35 mins"}
+    </div>
+    </div>
+))}
         </div>
     )
 }
