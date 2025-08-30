@@ -47,17 +47,17 @@ const RestaurantsMenu = () => {
         <span>{info.costForTwoMessage}</span>
     </div>
 
-    {/* Cuisines */}
+    
     <h2 className="text-lg font-medium text-gray-800 mb-1">
         {info.cuisines?.join(", ")}
     </h2>
 
-    {/* Outlet + Area */}
+    
     <div className="text-gray-600 text-base">
         <span className="font-semibold">Outlet</span> {info.areaName}
     </div>
 
-    {/* Delivery Time (if available) */}
+    
     <div className="text-gray-600 text-base mt-1">
         ⏱ {info.sla?.slaString || "30-35 mins"}
     </div>
@@ -67,4 +67,4 @@ const RestaurantsMenu = () => {
     )
 }
 
-export default RestaurantsMenu
+export default RestaurantsMenu;
