@@ -23,7 +23,13 @@ const RestaurantsMenu = () => {
 
     }
 
-    // const {itemCards} = resInfo?.
+    const itemCards = resInfo?.data?.cards[4]
+    ?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.itemCards;
+
+    console.log(itemCards);
+
+    
+    console.log(itemCards);
 
     return resInfo === null ? (
         <Shimmer/>
@@ -63,6 +69,13 @@ const RestaurantsMenu = () => {
     </div>
     </div>
 ))}
+<div>
+    <h1>Menu
+        <ul>
+            <li>{itemCards[0].card.info.name}</li>
+        </ul>
+    </h1>
+</div>
         </div>
     )
 }
