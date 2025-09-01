@@ -4,37 +4,27 @@ import Shimmer from "./Shimmer";
 const RestaurantsMenu = () => {
 
     const [resInfo , setResInfo] = useState(null)
-    const [menuItems, setMenuItems] = useState([]);
+    
 
     useEffect( () => {
         fetchMenu()
     } , [])
 
     const fetchMenu = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.07480&lng=72.88560&restaurantId=78036&catalog_qa=undefined&submitAction=ENTER")
+        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.07480&lng=72.88560&restaurantId=296658&catalog_qa=undefined&submitAction=ENTER")
 
         const json = await data.json()
         console.log(json);
     
 
         
-      const resArray = json?.data?.cards
-    ?.filter(c => c?.card?.card?.info) 
-    ?.map(c => c.card.card.info) || [];
+        const resArray = json?.data?.cards
+        ?.filter(c => c?.card?.card?.info) 
+        ?.map(c => c.card.card.info) || [];
     
 setResInfo(resArray);
 
-const menuCard = json?.data?.cards?.find(card => 
-            card?.card?.card?.groupedCard?.cardGroupMap?.REGULAR
-        );
 
-        const itemCards = menuCard?.card?.card?.groupedCard?.cardGroupMap?.REGULAR?.cards
-            ?.filter(card => card?.card?.card?.itemCards)
-            ?.flatMap(card => card.card.card.itemCards) || [];
-
-        setMenuItems(itemCards);
-        console.log("menuItems:", itemCards);
-    console.log("menuItems length:", itemCards.length);
     }  
 
     if(resInfo === null) return <Shimmer/>
@@ -77,12 +67,7 @@ const menuCard = json?.data?.cards?.find(card =>
     </div>
 ))}
 <div >
-    {menuItems.map( (item , index) =>(
-        <div key={index} className="max-w-3xl mx-auto my-5 bg-white rounded-lg shadow-md p-5 border border-gray-200">
-        <h3 className="text-xl font-semibold mb-2">{item.card.info.name}</h3>
-        <p className="text-gray-700 mb-2">{item.card.info.description}</p>
-        </div>
-    ) )}
+    
     
 </div>
         </div>
