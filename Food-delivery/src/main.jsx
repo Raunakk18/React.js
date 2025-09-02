@@ -11,6 +11,7 @@ import About from './Components/About.jsx';
 import Contact from './Components/Contact.jsx';
 import Error from './Components/Error.jsx';
 import RestaurantsMenu from './Components/RestaurantsMenu.jsx';
+import { Outlet } from 'react-router-dom';
 
 
 const router = createBrowserRouter([
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
     element: <Contact/>
   },
   {
-    path : "/resturants",
-    element : <RestaurantsMenu/>
+    path : "/restaurants/:resId",
+    element: <RestaurantsMenu/>
   }
     ]
   },
