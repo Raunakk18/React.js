@@ -79,8 +79,8 @@ const RestaurantsMenu = () => {
           <p>No menu items found</p>
         ) : (
           <ul className="space-y-3">
-            {menuItems.map((item) => (
-              <li key={item.id} className="border-b border-gray-400 p-2 pb-10 bg-white mt-5">
+            {menuItems.map((item , idx) => (
+              <li key={idx} className="border-b border-gray-400 p-2 pb-10 bg-white mt-5">
                 <span className="font-bold text-xl">{item.name}</span>
                 <h1 className=" font-bold pt-1.5">
                   ₹{item.price / 100 || item.defaultPrice / 100}

@@ -26,7 +26,7 @@ function Header() {
                 <Link to={"/About"}>About-Us</Link>
                 </li>
             <li className='p-2 m-2.5'>
-                <Link to={"/Menu"}>Menu</Link>
+                <Link to={"/resturants"}>Menu</Link>
             </li>
             <li className='p-2.5 m-2.5'>
                 <Link to={"/Contact"}>Contact</Link>
