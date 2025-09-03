@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import GetImageUrl from "./GetImageUrl";
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
 const Body = ()=> {
 
   const [listOfResturants , setListOfResturants] = useState([])
@@ -61,10 +61,14 @@ const Body = ()=> {
       </div>
       <div className="resturant-container flex flex-wrap gap-7 ml-2.5">
           {filteredResturants.map((restaurant, index) => (
+        <Link 
+        key={restaurant.info.id} 
+        to={"restaurants/"+restaurant.info.id}> 
         <ResturantCard 
           key={restaurant.info.id || index} 
           resData={restaurant} 
         />
+        </Link>
       ))}
       </div>
     </div>
