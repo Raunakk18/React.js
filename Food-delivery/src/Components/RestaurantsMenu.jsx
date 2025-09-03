@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
 
 const RestaurantsMenu = () => {
+  const { resId } = useParams(); // ✅ get restaurantId from URL
   const [resInfo, setResInfo] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
     fetchMenu();
-  }, []);
+  }, [resId]); // ✅ re-fetch whenever ID changes
 
   const fetchMenu = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.07480&lng=72.88560&restaurantId=28405&catalog_qa=undefined&submitAction=ENTER"
+      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.07480&lng=72.88560&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
     );
 
     const json = await data.json();
@@ -31,8 +33,8 @@ const RestaurantsMenu = () => {
 
     const items = menuCards
       .map((c) => c?.card?.card?.itemCards)
-      .filter(Boolean) // keep only valid arrays
-      .flat() // merge arrays
+      .filter(Boolean)
+      .flat()
       .map((item) => item.card.info);
 
     setMenuItems(items);
@@ -79,14 +81,23 @@ const RestaurantsMenu = () => {
           <p>No menu items found</p>
         ) : (
           <ul className="space-y-3">
-            {menuItems.map((item , idx) => (
-              <li key={idx} className="border-b border-gray-400 p-2 pb-10 bg-white mt-5">
+            {menuItems.map((item, idx) => (
+              <li
+                key={idx}
+                className="border-b border-gray-400 p-2 pb-10 bg-white mt-5"
+              >
                 <span className="font-bold text-xl">{item.name}</span>
-                <h1 className=" font-bold pt-1.5">
+                <h1 className="font-bold pt-1.5">
                   ₹{item.price / 100 || item.defaultPrice / 100}
                 </h1>
                 <h1 className="text-gray-600 font-medium">{item.description}</h1>
-                <div>{item.imageID}</div>
+                {item.imageId && (
+                  <img
+                    src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/${item.imageId}`}
+                    alt={item.name}
+                    className="rounded-lg mt-2"
+                  />
+                )}
               </li>
             ))}
           </ul>
