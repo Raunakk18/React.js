@@ -9,7 +9,7 @@ const RestaurantsMenu = () => {
 
   useEffect(() => {
     fetchMenu();
-  }, [resId]); // ✅ re-fetch whenever ID changes
+  }, [resId]); 
 
   const fetchMenu = async () => {
     const data = await fetch(
@@ -19,7 +19,7 @@ const RestaurantsMenu = () => {
     const json = await data.json();
     console.log(json);
 
-    // extract restaurant info
+    
     const resArray =
       json?.data?.cards
         ?.filter((c) => c?.card?.card?.info)
@@ -27,7 +27,7 @@ const RestaurantsMenu = () => {
 
     setResInfo(resArray);
 
-    // extract all menu items dynamically
+    
     const menuCards =
       json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
 
@@ -44,7 +44,7 @@ const RestaurantsMenu = () => {
 
   return (
     <div className="max-w-3xl mx-auto my-8">
-      {/* Restaurant Info */}
+      
       {resInfo.map((info, i) => (
         <div
           key={i}
@@ -74,7 +74,6 @@ const RestaurantsMenu = () => {
         </div>
       ))}
 
-      {/* Menu Items */}
       <div className="bg-white rounded-lg shadow-md p-5 border border-gray-200">
         <h2 className="text-xl font-bold mb-4">Menu</h2>
         {menuItems.length === 0 ? (
