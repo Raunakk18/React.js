@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import GetImageUrl from "./GetImageUrl";
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -28,9 +27,7 @@ const Body = ()=> {
       setFilteredResturants(restaurants)
   }
 
-  // if(listOfResturants.length === 0){
-  //   return <Shimmer/>
-  // }
+
 
   return listOfResturants.length=== 0?(
       <Shimmer/>
