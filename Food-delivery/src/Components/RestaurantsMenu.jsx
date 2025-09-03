@@ -83,20 +83,25 @@ const RestaurantsMenu = () => {
           <ul className="space-y-3">
             {menuItems.map((item, idx) => (
               <li
-                key={idx}
-                className="border-b border-gray-400 p-2 pb-10 bg-white mt-5"
+                key={`${item.id}-${idx}`}
+                className="flex justify-between items-start border-b border-gray-400 p-2 pb-10 bg-white mt-5"
               >
-                <span className="font-bold text-xl">{item.name}</span>
-                <h1 className="font-bold pt-1.5">
-                  ₹{item.price / 100 || item.defaultPrice / 100}
-                </h1>
-                <h1 className="text-gray-600 font-medium">{item.description}</h1>
+                
+                <div className="flex-1 pr-4">
+                  <span className="font-bold text-xl">{item.name}</span>
+                  <h1 className="font-bold pt-1.5">
+                    ₹{item.price ? item.price / 100 : item.defaultPrice ? item.defaultPrice / 100 : "N/A"}
+                  </h1>
+                  <h1 className="text-gray-600 font-medium">{item.description}</h1>
+                </div>
                 {item.imageId && (
-                  <img
-                    src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/${item.imageId}`}
-                    alt={item.name}
-                    className="rounded-lg mt-2"
-                  />
+                  <div className="w-40 flex-shrink-0 flex justify-end">
+                    <img
+                      src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/${item.imageId}`}
+                      alt={item.name}
+                      className="rounded-lg object-cover w-full h-auto"
+                    />
+                  </div>
                 )}
               </li>
             ))}
