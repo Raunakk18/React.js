@@ -47,4 +47,3 @@ function Header() {
 
 export default Header
 
-// only prectisw
