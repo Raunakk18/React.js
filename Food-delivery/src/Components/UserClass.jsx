@@ -8,11 +8,13 @@ class UserClass extends React.Component{
     }
 
     render(){
+        const {name , location , contact} = this.props
+
         return(
             <div className="p-4 border border-red mt-2">
-            <h1 className="text-2xl font-bold">Name : {this.props.name} </h1>
-            <h2 className="text-xl font-medium"> Location : Mumbai</h2>
-            <h3 className="text-lg font-medium">Contact : 1234567890</h3>
+            <h1 className="text-2xl font-bold">Name : {name} </h1>
+            <h2 className="text-xl font-medium"> Location : {location}</h2>
+            <h3 className="text-lg font-medium">Contact : {contact}</h3>
         </div>
         )
     }
