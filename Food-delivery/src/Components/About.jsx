@@ -5,7 +5,7 @@ import UserClass from "./UserClass";
 const About = () => {
     return(
         <div  className=" m-3   ">
-            <h1 className=" text-2xl font-medium ">
+            <h1 className=" text-3xl font-bold flex justify-center items-center ">
                 Welcome to our Food delivery website
             </h1>
             <User name = {"raunak function "}/>
