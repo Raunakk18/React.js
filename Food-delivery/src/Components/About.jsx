@@ -1,11 +1,13 @@
 import React from "react";
+import User from "./User";
 
 const About = () => {
     return(
-        <div >
-            <h1 className="flex justify-center items-center text-2xl font-medium my-5">
+        <div  className="border border-red m-3   ">
+            <h1 className=" text-2xl font-medium ">
                 Welcome to our Food delivery website
             </h1>
+            <User/>
         </div>
     )
 }
